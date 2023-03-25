@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM python:3.8-slim-buster as python-base
 
 ENV PYTHONUNBUFFERED=1 \
@@ -35,8 +36,5 @@ WORKDIR /app/src
 RUN chmod +x /app/docker-entrypoint.sh
 ENTRYPOINT /app/docker-entrypoint.sh $0 $@
 
-FROM app-base as test_only
-CMD ["poetry run python -m pytest tests"]
-
 FROM app-base as ml_app
-CMD ["python app.py"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
