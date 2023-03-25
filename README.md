@@ -21,3 +21,11 @@ To install any additional packages:
 poetry add <package-name>
 ```
 
+## Running Docker
+To run the docker image after building (make build), use:
+
+```bash
+docker run -d -p 5000:5000 gatech_project_166
+```
+
+and then going through localhost:5000 should work.

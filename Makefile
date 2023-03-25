@@ -1,3 +1,4 @@
+IMAGE = gatech_project_166
 GOOGLE_ADC_JSON = .config/gcloud/application_default_credentials.json
 CURRENT_USER = $(shell whoami | tr '.' '_' )  # label cannot contain dot character
 
@@ -8,7 +9,7 @@ help:  ## Get a description of what each command does
 
 
 build:  ## Build docker image locally for development
-	docker build . -t $(IMAGE):latest --build-arg _=$(shell cp -R ../utils ./src)
+	docker build . -t $(IMAGE):latest
 
 
 push:  ## Push image to registry
