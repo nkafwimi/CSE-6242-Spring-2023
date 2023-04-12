@@ -12,7 +12,8 @@ ENV PYTHONUNBUFFERED=1 \
     POETRY_VERSION=1.3.2 \
     PYSETUP_PATH="/opt/pysetup" \
     PYTHONHASHSEED=0 \
-    VENV_PATH="/opt/pysetup/.venv"
+    VENV_PATH="/opt/pysetup/.venv" \
+    DASH_DEBUG_MODE=False
 
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
@@ -37,4 +38,5 @@ RUN chmod +x /app/docker-entrypoint.sh
 ENTRYPOINT /app/docker-entrypoint.sh $0 $@
 
 FROM app-base as ml_app
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+EXPOSE 5000
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "--reload", "app:server", "--timeout 90"]

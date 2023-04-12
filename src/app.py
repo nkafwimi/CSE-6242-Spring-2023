@@ -1,15 +1,19 @@
+import os
 import pandas as pd
 import plotly.graph_objs as go
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output, State
+from flask import Flask
 
 # Read the data from CSV
 df = pd.read_csv("./imports/sentiments/sentiment_results.csv")
 
 # Define the app
 app = dash.Dash(__name__, routes_pathname_prefix='/graph/')
+server = app.server
+debug = False if os.environ["DASH_DEBUG_MODE"] == "False" else True
 
 
 # Define the layout
@@ -73,4 +77,4 @@ def update_figure(btn1_clicks, btn2_clicks, btn3_clicks, figure1, figure2):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True, port=5000)
+    app.run(host="0.0.0.0", port="5000", debug=debug)
