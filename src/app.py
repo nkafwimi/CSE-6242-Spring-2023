@@ -6,7 +6,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
 # Read the data from CSV
-df = pd.read_csv("../sentiments/sentiment_results.csv")
+df = pd.read_csv("./imports/sentiments/sentiment_results.csv")
 
 # Define the app
 app = dash.Dash(__name__, routes_pathname_prefix='/graph/')
