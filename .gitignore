@@ -3,7 +3,6 @@
 **/.DS_Store
 **/env/
 **/*.jpg
-**/*.csv
 **/*.code-workspace
 **/dask-worker-space/
 **/*.png

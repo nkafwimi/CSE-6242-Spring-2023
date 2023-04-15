@@ -1,0 +1,4 @@
+time,total_tweets,negative_tweets,ratio
+0 to 3 days,1000,883,0.883
+4 to 7 days,1000,887,0.887
+8 to 16 days,1000,982,0.982
