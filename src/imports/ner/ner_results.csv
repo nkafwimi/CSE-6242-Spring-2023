@@ -1,0 +1,4 @@
+time,total_tweets,ner_results
+0 to 3 days,1000,"{'Turkey': 180, 'Syria': 162, 'Twitter': 36, 'US': 14, 'Ukraine': 5}"
+4 to 7 days,1000,"{'Turkey': 140, 'Syria': 139, 'US': 12, 'UN': 7, 'Facebook': 5, 'Israel': 5}"
+8 to 16 days,1000,"{'Turkey': 321, 'Syria': 152, 'Hatay': 14, 'Allah': 13, 'Lebanon': 13, 'US': 8}"
