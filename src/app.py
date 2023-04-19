@@ -49,15 +49,15 @@ def update_figure(btn1_clicks, btn2_clicks, btn3_clicks, figure1, figure2, figur
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
     # default chart
-    
+
     # sentiment analysis
     row = df.iloc[0]
     xname = "Between 0 and 3 Days"
-    
+
     # ner analysis
     row_ner = df_ner.iloc[0]
-    xname = "Between 0 and 3 Days" 
-    
+    xname = "Between 0 and 3 Days"
+
 
     # Determine which row to use
     if button_id == "btn-0-3":
@@ -72,32 +72,16 @@ def update_figure(btn1_clicks, btn2_clicks, btn3_clicks, figure1, figure2, figur
         row = df.iloc[2]
         row_ner = df_ner.iloc[2]
         xname = "Between 8 and 16 Days"
-        
-    # sentiment analysis values    
+
+    # sentiment analysis values
 
     pos = row["total_tweets"] - row["negative_tweets"]
     neg = row["negative_tweets"]
-    
-    # ner analysis values
-    
-    Turkey = row_ner["Turkey"]
-    Syria = row_ner["Syria"]
-    US = row_ner["US"]
-    Ukraine = row_ner["Ukraine"]
-    Israel = row_ner["Israel"]
-    Hatay = row_ner["Hatay"]
-    Allah = row_ner["Allah"]
-    Lebanon = row_ner["Lebanon"]
-    Twitter = row_ner["Twitter"]
-    Facebook = row_ner["Facebook"]
-    UN = row_ner["UN"]
-
 
     # Create the bar chart
     data1 = [go.Bar(x=["positive_tweets", "negative_tweets"], y=[pos, neg])]
     layout1 = go.Layout(title=xname)
     fig1 = go.Figure(data=data1, layout=layout1)
-    
 
     # Create the pie chart
     labels = ["Negative Tweets", "Positive Tweets"]
@@ -106,17 +90,18 @@ def update_figure(btn1_clicks, btn2_clicks, btn3_clicks, figure1, figure2, figur
     data2 = [go.Pie(labels=labels, values=values)]
     layout2 = go.Layout(title="Negative Tweets & Positive Tweets")
     fig2 = go.Figure(data=data2, layout=layout2)
-    
+
     # Create the bar chart 2
-    data3 = [go.Bar(x=["Turkey", "Syria", "US", "Ukraine" , "Israel" , "Hatay" , "Allah" , "Lebanon", "Twitter", "Facebook", "UN"],y=[row_ner["Turkey"], row_ner["Syria"], row_ner["US"], row_ner["Ukraine"], row_ner["Israel"], row_ner["Hatay"], row_ner["Allah"], row_ner["Lebanon"], row_ner["Twitter"], row_ner["Facebook"], row_ner["UN"]])]
+    data3 = [go.Bar(x=["Turkey", "Syria", "US", "Ukraine" , "Israel" , "Hatay" , "Allah" , "Lebanon", "Twitter", "Facebook", "UN"],
+                    y=[row_ner["Turkey"], row_ner["Syria"], row_ner["US"], row_ner["Ukraine"], row_ner["Israel"], row_ner["Hatay"], row_ner["Allah"], row_ner["Lebanon"], row_ner["Twitter"], row_ner["Facebook"], row_ner["UN"]])]
     layout3 = go.Layout(title=xname)
     fig3 = go.Figure(data=data3, layout=layout3)
-    
-     
+
+
     # Create the pie chart 2
     labels_pie2 = ["Turkey", "Syria", "US", "Ukraine" , "Israel" , "Hatay" , "Allah" , "Lebanon", "Twitter", "Facebook", "UN"]
     values_pie2 = [row_ner["Turkey"], row_ner["Syria"], row_ner["US"], row_ner["Ukraine"], row_ner["Israel"], row_ner["Hatay"], row_ner["Allah"], row_ner["Lebanon"], row_ner["Twitter"], row_ner["Facebook"], row_ner["UN"]]
-    
+
     data4 = [go.Pie(labels=labels_pie2, values=values_pie2)]
     layout4 = go.Layout(title="NER Results")
     fig4 = go.Figure(data=data4, layout=layout4)
