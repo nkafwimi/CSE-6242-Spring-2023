@@ -38,7 +38,7 @@ To run the docker image after building (make build), use:
 docker run -d -p 5000:5000 gatech_project_166
 ```
 
-and then going through localhost:5000 should work.
+and then going through localhost:5000/graph should work.
 
 To stop the docker image:
 
@@ -46,3 +46,6 @@ To stop the docker image:
 docker ps
 docker stop {container_id}
 ```
+
+## Viewing the Project
+To view the project, go to localhost:5000/graph
